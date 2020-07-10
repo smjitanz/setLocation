@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="NodeServices"
+     targetNamespace="http://ws.terminal.service.connode.com/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://ws.terminal.service.connode.com/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+    >
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.terminal.service.connode.com/"
+             attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ws.terminal.service.connode.com/">
+            <xs:element name="NodeFault" type="tns:wsNodeFault"/>
+            <xs:element name="addNodeIdentityToBlackList" type="tns:addNodeIdentityToBlackList"/>
+            <xs:element name="addNodeIdentityToBlackListResponse" type="tns:addNodeIdentityToBlackListResponse"/>
+            <xs:element name="addNodeIdentityToWhiteList" type="tns:addNodeIdentityToWhiteList"/>
+            <xs:element name="addNodeIdentityToWhiteListResponse" type="tns:addNodeIdentityToWhiteListResponse"/>
+            <xs:element name="countNodeEvents" type="tns:countNodeEvents"/>
+            <xs:element name="countNodeEventsResponse" type="tns:countNodeEventsResponse"/>
+            <xs:element name="countNodeMetrics" type="tns:countNodeMetrics"/>
+            <xs:element name="countNodeMetricsResponse" type="tns:countNodeMetricsResponse"/>
+            <xs:element name="countNodes" type="tns:countNodes"/>
+            <xs:element name="countNodesResponse" type="tns:countNodesResponse"/>
+            <xs:element name="executeNodeToServerDataRate" type="tns:executeNodeToServerDataRate"/>
+            <xs:element name="executeServerToNodeDataRate" type="tns:executeServerToNodeDataRate"/>
+            <xs:element name="getAreaTopologyView" type="tns:getAreaTopologyView"/>
+            <xs:element name="getAreaTopologyViewResponse" type="tns:getAreaTopologyViewResponse"/>
+            <xs:element name="getMessageQueuePullIntervalForNode" type="tns:getMessageQueuePullIntervalForNode"/>
+            <xs:element name="getMessageQueuePullIntervalForNodeResponse" type="tns:getMessageQueuePullIntervalForNodeResponse"/>
+            <xs:element name="getNodeAccessConfiguration" type="tns:getNodeAccessConfiguration"/>
+            <xs:element name="getNodeAccessConfigurationResponse" type="tns:getNodeAccessConfigurationResponse"/>
+            <xs:element name="getNodeById" type="tns:getNodeById"/>
+            <xs:element name="getNodeByIdResponse" type="tns:getNodeByIdResponse"/>
+            <xs:element name="getNodeEvents" type="tns:getNodeEvents"/>
+            <xs:element name="getNodeEventsResponse" type="tns:getNodeEventsResponse"/>
+            <xs:element name="getNodeMetrics" type="tns:getNodeMetrics"/>
+            <xs:element name="getNodeMetricsResponse" type="tns:getNodeMetricsResponse"/>
+            <xs:element name="getNodeTopologyView" type="tns:getNodeTopologyView"/>
+            <xs:element name="getNodeTopologyViewResponse" type="tns:getNodeTopologyViewResponse"/>
+            <xs:element name="getUplinkIpTunnelInfo" type="tns:getUplinkIpTunnelInfo"/>
+            <xs:element name="getUplinkIpTunnelInfoResponse" type="tns:wsUplinkIpTunnelInfoResponse"/>
+            <xs:element name="isNodeIdentityBlackListed" type="tns:isNodeIdentityBlackListed"/>
+            <xs:element name="isNodeIdentityBlackListedResponse" type="tns:isNodeIdentityBlackListedResponse"/>
+            <xs:element name="isNodeIdentityWhiteListed" type="tns:isNodeIdentityWhiteListed"/>
+            <xs:element name="isNodeIdentityWhiteListedResponse" type="tns:isNodeIdentityWhiteListedResponse"/>
+            <xs:element name="nodeToServerDataRateResponse" type="tns:wsNodeToServerDataRateResponse"/>
+            <xs:element name="pingNode" type="tns:pingNode"/>
+            <xs:element name="pingNodeResponse" type="tns:wsPingNodeResponse"/>
+            <xs:element name="purgeNode" type="tns:purgeNode"/>
+            <xs:element name="purgeNodeResponse" type="tns:purgeNodeResponse"/>
+            <xs:element name="removeNodeIdentityFromBlackList" type="tns:removeNodeIdentityFromBlackList"/>
+            <xs:element name="removeNodeIdentityFromBlackListResponse" type="tns:removeNodeIdentityFromBlackListResponse"/>
+            <xs:element name="removeNodeIdentityFromWhiteList" type="tns:removeNodeIdentityFromWhiteList"/>
+            <xs:element name="removeNodeIdentityFromWhiteListResponse" type="tns:removeNodeIdentityFromWhiteListResponse"/>
+            <xs:element name="resetMessageQueuePullIntervalForNode" type="tns:resetMessageQueuePullIntervalForNode"/>
+            <xs:element name="resetMessageQueuePullIntervalForNodeResponse" type="tns:resetMessageQueuePullIntervalForNodeResponse"/>
+            <xs:element name="restartNode" type="tns:restartNode"/>
+            <xs:element name="restartNodeResponse" type="tns:wsRestartNodeResponse"/>
+            <xs:element name="searchNodeEvents" type="tns:searchNodeEvents"/>
+            <xs:element name="searchNodeEventsResponse" type="tns:searchNodeEventsResponse"/>
+            <xs:element name="searchNodeMetrics" type="tns:searchNodeMetrics"/>
+            <xs:element name="searchNodeMetricsResponse" type="tns:searchNodeMetricsResponse"/>
+            <xs:element name="searchNodes" type="tns:searchNodes"/>
+            <xs:element name="searchNodesResponse" type="tns:searchNodesResponse"/>
+            <xs:element name="serverToNodeDataRateResponse" type="tns:wsServerToNodeDataRateResponse"/>
+            <xs:element name="setLocation" type="tns:setLocation"/>
+            <xs:element name="setLocationResponse" type="tns:setLocationResponse"/>
+            <xs:element name="setMessageQueuePullIntervalForNode" type="tns:setMessageQueuePullIntervalForNode"/>
+            <xs:element name="setMessageQueuePullIntervalForNodeResponse" type="tns:setMessageQueuePullIntervalForNodeResponse"/>
+            <xs:element name="setNodeAccessConfiguration" type="tns:setNodeAccessConfiguration"/>
+            <xs:element name="setNodeAccessConfigurationResponse" type="tns:setNodeAccessConfigurationResponse"/>
+            <xs:complexType name="removeNodeIdentityFromWhiteList">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeNodeIdentityFromWhiteListResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="wsNodeFault">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAreaTopologyView">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                    <xs:element name="radiusMeters" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAreaTopologyViewResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeTopologyView"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeTopologyView">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="originNode" type="tns:wsNodeTopology"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="topologies" nillable="true"
+                         type="tns:wsNodeTopology"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeTopology">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="children" nillable="true" type="tns:wsNodeTopology"/>
+                    <xs:element minOccurs="0" name="node" type="tns:wsNode"/>
+                    <xs:element minOccurs="0" name="numberOfChildren" type="xs:int"/>
+                    <xs:element minOccurs="0" name="numberOfHops" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNode">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="address" type="xs:string"/>
+                    <xs:element minOccurs="0" name="aliasId" type="xs:string"/>
+                    <xs:element minOccurs="0" name="createTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="currentFirmwareVersion" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gatewayNodeId" type="xs:string"/>
+                    <xs:element minOccurs="0" name="hardwareVersion" type="xs:string"/>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element minOccurs="0" name="latitude" type="xs:double"/>
+                    <xs:element minOccurs="0" name="longitude" type="xs:double"/>
+                    <xs:element minOccurs="0" name="nodeId" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nodeType" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentNodeId" type="xs:string"/>
+                    <xs:element minOccurs="0" name="pendingFirmwareVersion" type="xs:string"/>
+                    <xs:element name="port" type="xs:int"/>
+                    <xs:element minOccurs="0" name="serverName" type="xs:string"/>
+                    <xs:element minOccurs="0" name="status" type="xs:string"/>
+                    <xs:element minOccurs="0" name="updateTime" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="searchNodeMetrics">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeMetricSearchCriteria"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeMetricSearchCriteria">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsNotificationSearchCriteria">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="numericCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="textCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="startMetricTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="endMetricTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="sortOrder" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="wsNotificationSearchCriteria">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsSearch">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="startId" type="xs:long"/>
+                            <xs:element minOccurs="0" name="endId" type="xs:long"/>
+                            <xs:element minOccurs="0" name="nodeId" type="xs:string"/>
+                            <xs:element minOccurs="0" name="startSequenceNumber" type="xs:int"/>
+                            <xs:element minOccurs="0" name="endSequenceNumber" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="wsSearch">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="itemStart" type="xs:int"/>
+                    <xs:element minOccurs="0" name="itemCount" type="xs:int"/>
+                    <xs:element minOccurs="0" name="countTotalItems" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="startCreateTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="endCreateTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="startUpdateTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="endUpdateTime" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="sortDirection" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="searchNodeMetricsResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeMetricSearchResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeMetricSearchResult">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsAbstractSearchResult">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true"
+                                 type="tns:wsNodeMetric"/>
+                            <xs:element minOccurs="0" name="search" type="tns:wsNodeMetricSearchCriteria"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="wsAbstractSearchResult">
+                <xs:sequence>
+                    <xs:element name="totalItemCount" type="xs:long"/>
+                    <xs:element name="numPages" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeMetric">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsNotification">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="metricTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="numericCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="textCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="value" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType abstract="true" name="wsNotification">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="createTime" type="xs:dateTime"/>
+                    <xs:element name="id" type="xs:long"/>
+                    <xs:element minOccurs="0" name="nodeId" type="xs:string"/>
+                    <xs:element name="sequenceNumber" type="xs:int"/>
+                    <xs:element minOccurs="0" name="status" type="xs:string"/>
+                    <xs:element minOccurs="0" name="timestamp" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="updateTime" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="countNodes">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeSearch"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeSearch">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsSearch">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="nodeId" type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" type="xs:string"/>
+                            <xs:element minOccurs="0" name="port" type="xs:int"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="statuses" type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="nodeTypes" type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="hardwareVersions"
+                                 type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="currentFirmwareVersions"
+                                 type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="pendingFirmwareVersions"
+                                 type="xs:string"/>
+                            <xs:element minOccurs="0" name="nodeGroupName" type="xs:string"/>
+                            <xs:element minOccurs="0" name="nodeGroupId" type="xs:long"/>
+                            <xs:element minOccurs="0" name="deviceId" type="xs:string"/>
+                            <xs:element minOccurs="0" name="jobId" type="xs:string"/>
+                            <xs:element minOccurs="0" name="includeJobExecutionHistory" type="xs:boolean"/>
+                            <xs:element minOccurs="0" name="sortOrder" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="countNodesResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addNodeIdentityToWhiteList">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addNodeIdentityToWhiteListResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="executeServerToNodeDataRate">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                    <xs:element name="parameters" type="tns:wsServerToNodeDataRateParameters"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsServerToNodeDataRateParameters">
+                <xs:sequence>
+                    <xs:element name="size" type="xs:int"/>
+                    <xs:element name="blockSize" type="xs:int"/>
+                    <xs:element name="numConcurrentRequests" type="xs:int"/>
+                    <xs:element minOccurs="0" name="retry" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsServerToNodeDataRateResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:wsDataRateResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsDataRateResult">
+                <xs:sequence>
+                    <xs:element name="durationMillis" type="xs:long"/>
+                    <xs:element name="maxRoundtripTimeMillis" type="xs:long"/>
+                    <xs:element name="minRoundtripTimeMillis" type="xs:long"/>
+                    <xs:element name="missingBlocks" type="xs:long"/>
+                    <xs:element name="receivedSize" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="resetMessageQueuePullIntervalForNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="resetMessageQueuePullIntervalForNodeResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="isNodeIdentityWhiteListed">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="isNodeIdentityWhiteListedResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="pingNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsPingNodeResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:wsPing"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsPing">
+                <xs:sequence>
+                    <xs:element name="roundtripTimeMillis" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeTopologyView">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeTopologyViewResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeTopologyView"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeById">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeByIdResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNode"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="countNodeMetrics">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeMetricSearchCriteria"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="countNodeMetricsResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getMessageQueuePullIntervalForNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getMessageQueuePullIntervalForNodeResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="purgeNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="purgeNodeResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="restartNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsRestartNodeResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:wsRestart"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsRestart">
+                <xs:sequence>
+                    <xs:element name="roundtripTimeMillis" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setLocation">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                    <xs:element name="latitude" type="xs:string"/>
+                    <xs:element name="longitude" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setLocationResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNode"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="searchNodeEvents">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeEventSearchCriteria"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeEventSearchCriteria">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsNotificationSearchCriteria">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="numericCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="textCode" type="xs:string"/>
+                            <xs:element minOccurs="0" name="startEventTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="endEventTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="sortOrder" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="searchNodeEventsResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeEventSearchResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeEventSearchResult">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsAbstractSearchResult">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true"
+                                 type="tns:wsEvent"/>
+                            <xs:element minOccurs="0" name="search" type="tns:wsNodeEventSearchCriteria"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="wsEvent">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsNotification">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="description" type="xs:string"/>
+                            <xs:element minOccurs="0" name="eventTime" type="xs:dateTime"/>
+                            <xs:element minOccurs="0" name="numericCode" type="xs:string"/>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="parameters" nillable="true"
+                                 type="xs:string"/>
+                            <xs:element minOccurs="0" name="textCode" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="setMessageQueuePullIntervalForNode">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                    <xs:element name="pullIntervalSeconds" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setMessageQueuePullIntervalForNodeResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="removeNodeIdentityFromBlackList">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeNodeIdentityFromBlackListResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="isNodeIdentityBlackListed">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="isNodeIdentityBlackListedResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeMetrics">
+                <xs:sequence>
+                    <xs:element name="startId" type="xs:long"/>
+                    <xs:element name="itemCount" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeMetricsResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeMetricSearchResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addNodeIdentityToBlackList">
+                <xs:sequence>
+                    <xs:element name="nodeIdentity" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addNodeIdentityToBlackListResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getNodeEvents">
+                <xs:sequence>
+                    <xs:element name="startId" type="xs:long"/>
+                    <xs:element name="itemCount" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getNodeEventsResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeEventSearchResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="searchNodes">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeSearch"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="searchNodesResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeSearchResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeSearchResult">
+                <xs:complexContent>
+                    <xs:extension base="tns:wsAbstractSearchResult">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true"
+                                 type="tns:wsNode"/>
+                            <xs:element minOccurs="0" name="search" type="tns:wsNodeSearch"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="executeNodeToServerDataRate">
+                <xs:sequence>
+                    <xs:element name="nodeId" type="xs:string"/>
+                    <xs:element name="parameters" type="tns:wsNodeToServerDataRateParameters"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeToServerDataRateParameters">
+                <xs:sequence>
+                    <xs:element name="size" type="xs:int"/>
+                    <xs:element name="blockSize" type="xs:int"/>
+                    <xs:element name="numConcurrentRequests" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeToServerDataRateResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:wsDataRateResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="countNodeEvents">
+                <xs:sequence>
+                    <xs:element name="searchCriteria" type="tns:wsNodeEventSearchCriteria"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="countNodeEventsResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setNodeAccessConfiguration">
+                <xs:sequence>
+                    <xs:element name="nodeAccessConfiguration" type="tns:wsNodeAccessConfiguration"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsNodeAccessConfiguration">
+                <xs:sequence>
+                    <xs:element name="whiteListEnabled" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="setNodeAccessConfigurationResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getNodeAccessConfiguration">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="getNodeAccessConfigurationResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="tns:wsNodeAccessConfiguration"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getUplinkIpTunnelInfo">
+                <xs:sequence>
+                    <xs:element name="gatewayNodeId" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsUplinkIpTunnelInfoResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:wsUplinkIpTunnelInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="wsUplinkIpTunnelInfo">
+                <xs:sequence>
+                    <xs:element name="establishTime" type="xs:int"/>
+                    <xs:element minOccurs="0" name="prefix" type="xs:string"/>
+                    <xs:element minOccurs="0" name="remoteAddress" type="xs:string"/>
+                    <xs:element name="remotePort" type="xs:int"/>
+                    <xs:element name="rxBytes" type="xs:long"/>
+                    <xs:element name="txBytes" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="uplinkIpTunneInfoResponse" nillable="true" type="tns:wsUplinkIpTunnelInfoResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="removeNodeIdentityFromWhiteList">
+        <wsdl:part name="parameters" element="tns:removeNodeIdentityFromWhiteList"/>
+    </wsdl:message>
+    <wsdl:message name="removeNodeIdentityFromWhiteListResponse">
+        <wsdl:part name="parameters" element="tns:removeNodeIdentityFromWhiteListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="WSNodeException">
+        <wsdl:part name="WSNodeException" element="tns:NodeFault"/>
+    </wsdl:message>
+    <wsdl:message name="getAreaTopologyView">
+        <wsdl:part name="parameters" element="tns:getAreaTopologyView"/>
+    </wsdl:message>
+    <wsdl:message name="getAreaTopologyViewResponse">
+        <wsdl:part name="parameters" element="tns:getAreaTopologyViewResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodeMetrics">
+        <wsdl:part name="parameters" element="tns:searchNodeMetrics"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodeMetricsResponse">
+        <wsdl:part name="parameters" element="tns:searchNodeMetricsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="countNodes">
+        <wsdl:part name="parameters" element="tns:countNodes"/>
+    </wsdl:message>
+    <wsdl:message name="countNodesResponse">
+        <wsdl:part name="parameters" element="tns:countNodesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addNodeIdentityToWhiteList">
+        <wsdl:part name="parameters" element="tns:addNodeIdentityToWhiteList"/>
+    </wsdl:message>
+    <wsdl:message name="addNodeIdentityToWhiteListResponse">
+        <wsdl:part name="parameters" element="tns:addNodeIdentityToWhiteListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="executeServerToNodeDataRate">
+        <wsdl:part name="parameters" element="tns:executeServerToNodeDataRate"/>
+    </wsdl:message>
+    <wsdl:message name="executeServerToNodeDataRateResponse">
+        <wsdl:part name="parameters" element="tns:serverToNodeDataRateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resetMessageQueuePullIntervalForNode">
+        <wsdl:part name="parameters" element="tns:resetMessageQueuePullIntervalForNode"/>
+    </wsdl:message>
+    <wsdl:message name="resetMessageQueuePullIntervalForNodeResponse">
+        <wsdl:part name="parameters" element="tns:resetMessageQueuePullIntervalForNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="isNodeIdentityWhiteListed">
+        <wsdl:part name="parameters" element="tns:isNodeIdentityWhiteListed"/>
+    </wsdl:message>
+    <wsdl:message name="isNodeIdentityWhiteListedResponse">
+        <wsdl:part name="parameters" element="tns:isNodeIdentityWhiteListedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="pingNode">
+        <wsdl:part name="parameters" element="tns:pingNode"/>
+    </wsdl:message>
+    <wsdl:message name="pingNodeResponse">
+        <wsdl:part name="parameters" element="tns:pingNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeTopologyView">
+        <wsdl:part name="parameters" element="tns:getNodeTopologyView"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeTopologyViewResponse">
+        <wsdl:part name="parameters" element="tns:getNodeTopologyViewResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeById">
+        <wsdl:part name="parameters" element="tns:getNodeById"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeByIdResponse">
+        <wsdl:part name="parameters" element="tns:getNodeByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="countNodeMetrics">
+        <wsdl:part name="parameters" element="tns:countNodeMetrics"/>
+    </wsdl:message>
+    <wsdl:message name="countNodeMetricsResponse">
+        <wsdl:part name="parameters" element="tns:countNodeMetricsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMessageQueuePullIntervalForNode">
+        <wsdl:part name="parameters" element="tns:getMessageQueuePullIntervalForNode"/>
+    </wsdl:message>
+    <wsdl:message name="getMessageQueuePullIntervalForNodeResponse">
+        <wsdl:part name="parameters" element="tns:getMessageQueuePullIntervalForNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="purgeNode">
+        <wsdl:part name="parameters" element="tns:purgeNode"/>
+    </wsdl:message>
+    <wsdl:message name="purgeNodeResponse">
+        <wsdl:part name="parameters" element="tns:purgeNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="restartNode">
+        <wsdl:part name="parameters" element="tns:restartNode"/>
+    </wsdl:message>
+    <wsdl:message name="restartNodeResponse">
+        <wsdl:part name="parameters" element="tns:restartNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setLocation">
+        <wsdl:part name="parameters" element="tns:setLocation"/>
+    </wsdl:message>
+    <wsdl:message name="setLocationResponse">
+        <wsdl:part name="parameters" element="tns:setLocationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodeEvents">
+        <wsdl:part name="parameters" element="tns:searchNodeEvents"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodeEventsResponse">
+        <wsdl:part name="parameters" element="tns:searchNodeEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setMessageQueuePullIntervalForNode">
+        <wsdl:part name="parameters" element="tns:setMessageQueuePullIntervalForNode"/>
+    </wsdl:message>
+    <wsdl:message name="setMessageQueuePullIntervalForNodeResponse">
+        <wsdl:part name="parameters" element="tns:setMessageQueuePullIntervalForNodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeNodeIdentityFromBlackList">
+        <wsdl:part name="parameters" element="tns:removeNodeIdentityFromBlackList"/>
+    </wsdl:message>
+    <wsdl:message name="removeNodeIdentityFromBlackListResponse">
+        <wsdl:part name="parameters" element="tns:removeNodeIdentityFromBlackListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="isNodeIdentityBlackListed">
+        <wsdl:part name="parameters" element="tns:isNodeIdentityBlackListed"/>
+    </wsdl:message>
+    <wsdl:message name="isNodeIdentityBlackListedResponse">
+        <wsdl:part name="parameters" element="tns:isNodeIdentityBlackListedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeMetrics">
+        <wsdl:part name="parameters" element="tns:getNodeMetrics"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeMetricsResponse">
+        <wsdl:part name="parameters" element="tns:getNodeMetricsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addNodeIdentityToBlackList">
+        <wsdl:part name="parameters" element="tns:addNodeIdentityToBlackList"/>
+    </wsdl:message>
+    <wsdl:message name="addNodeIdentityToBlackListResponse">
+        <wsdl:part name="parameters" element="tns:addNodeIdentityToBlackListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeEvents">
+        <wsdl:part name="parameters" element="tns:getNodeEvents"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeEventsResponse">
+        <wsdl:part name="parameters" element="tns:getNodeEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodes">
+        <wsdl:part name="parameters" element="tns:searchNodes"/>
+    </wsdl:message>
+    <wsdl:message name="searchNodesResponse">
+        <wsdl:part name="parameters" element="tns:searchNodesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="executeNodeToServerDataRate">
+        <wsdl:part name="parameters" element="tns:executeNodeToServerDataRate"/>
+    </wsdl:message>
+    <wsdl:message name="executeNodeToServerDataRateResponse">
+        <wsdl:part name="parameters" element="tns:nodeToServerDataRateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="countNodeEvents">
+        <wsdl:part name="parameters" element="tns:countNodeEvents"/>
+    </wsdl:message>
+    <wsdl:message name="countNodeEventsResponse">
+        <wsdl:part name="parameters" element="tns:countNodeEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setNodeAccessConfiguration">
+        <wsdl:part name="parameters" element="tns:setNodeAccessConfiguration"/>
+    </wsdl:message>
+    <wsdl:message name="setNodeAccessConfigurationResponse">
+        <wsdl:part name="parameters" element="tns:setNodeAccessConfigurationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeAccessConfiguration">
+        <wsdl:part name="parameters" element="tns:getNodeAccessConfiguration"/>
+    </wsdl:message>
+    <wsdl:message name="getNodeAccessConfigurationResponse">
+        <wsdl:part name="parameters" element="tns:getNodeAccessConfigurationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUplinkIpTunnelInfo">
+        <wsdl:part name="parameters" element="tns:getUplinkIpTunnelInfo"/>
+    </wsdl:message>
+    <wsdl:message name="getUplinkIpTunnelInfoResponse">
+        <wsdl:part name="parameters" element="tns:uplinkIpTunneInfoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="NodeServices">
+        <wsdl:operation name="removeNodeIdentityFromWhiteList">
+            <wsdl:input name="removeNodeIdentityFromWhiteList" message="tns:removeNodeIdentityFromWhiteList"/>
+            <wsdl:output name="removeNodeIdentityFromWhiteListResponse" message="tns:removeNodeIdentityFromWhiteListResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAreaTopologyView">
+            <wsdl:input name="getAreaTopologyView" message="tns:getAreaTopologyView"/>
+            <wsdl:output name="getAreaTopologyViewResponse" message="tns:getAreaTopologyViewResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodeMetrics">
+            <wsdl:input name="searchNodeMetrics" message="tns:searchNodeMetrics"/>
+            <wsdl:output name="searchNodeMetricsResponse" message="tns:searchNodeMetricsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="countNodes">
+            <wsdl:input name="countNodes" message="tns:countNodes"/>
+            <wsdl:output name="countNodesResponse" message="tns:countNodesResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="addNodeIdentityToWhiteList">
+            <wsdl:input name="addNodeIdentityToWhiteList" message="tns:addNodeIdentityToWhiteList"/>
+            <wsdl:output name="addNodeIdentityToWhiteListResponse" message="tns:addNodeIdentityToWhiteListResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="executeServerToNodeDataRate">
+            <wsdl:input name="executeServerToNodeDataRate" message="tns:executeServerToNodeDataRate"/>
+            <wsdl:output name="executeServerToNodeDataRateResponse" message="tns:executeServerToNodeDataRateResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="resetMessageQueuePullIntervalForNode">
+            <wsdl:input name="resetMessageQueuePullIntervalForNode" message="tns:resetMessageQueuePullIntervalForNode"/>
+            <wsdl:output name="resetMessageQueuePullIntervalForNodeResponse" message="tns:resetMessageQueuePullIntervalForNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isNodeIdentityWhiteListed">
+            <wsdl:input name="isNodeIdentityWhiteListed" message="tns:isNodeIdentityWhiteListed"/>
+            <wsdl:output name="isNodeIdentityWhiteListedResponse" message="tns:isNodeIdentityWhiteListedResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="pingNode">
+            <wsdl:input name="pingNode" message="tns:pingNode"/>
+            <wsdl:output name="pingNodeResponse" message="tns:pingNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeTopologyView">
+            <wsdl:input name="getNodeTopologyView" message="tns:getNodeTopologyView"/>
+            <wsdl:output name="getNodeTopologyViewResponse" message="tns:getNodeTopologyViewResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeById">
+            <wsdl:input name="getNodeById" message="tns:getNodeById"/>
+            <wsdl:output name="getNodeByIdResponse" message="tns:getNodeByIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="countNodeMetrics">
+            <wsdl:input name="countNodeMetrics" message="tns:countNodeMetrics"/>
+            <wsdl:output name="countNodeMetricsResponse" message="tns:countNodeMetricsResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMessageQueuePullIntervalForNode">
+            <wsdl:input name="getMessageQueuePullIntervalForNode" message="tns:getMessageQueuePullIntervalForNode"/>
+            <wsdl:output name="getMessageQueuePullIntervalForNodeResponse" message="tns:getMessageQueuePullIntervalForNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="purgeNode">
+            <wsdl:input name="purgeNode" message="tns:purgeNode"/>
+            <wsdl:output name="purgeNodeResponse" message="tns:purgeNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="restartNode">
+            <wsdl:input name="restartNode" message="tns:restartNode"/>
+            <wsdl:output name="restartNodeResponse" message="tns:restartNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="setLocation">
+            <wsdl:input name="setLocation" message="tns:setLocation"/>
+            <wsdl:output name="setLocationResponse" message="tns:setLocationResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodeEvents">
+            <wsdl:input name="searchNodeEvents" message="tns:searchNodeEvents"/>
+            <wsdl:output name="searchNodeEventsResponse" message="tns:searchNodeEventsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageQueuePullIntervalForNode">
+            <wsdl:input name="setMessageQueuePullIntervalForNode" message="tns:setMessageQueuePullIntervalForNode"/>
+            <wsdl:output name="setMessageQueuePullIntervalForNodeResponse" message="tns:setMessageQueuePullIntervalForNodeResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeNodeIdentityFromBlackList">
+            <wsdl:input name="removeNodeIdentityFromBlackList" message="tns:removeNodeIdentityFromBlackList"/>
+            <wsdl:output name="removeNodeIdentityFromBlackListResponse" message="tns:removeNodeIdentityFromBlackListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="isNodeIdentityBlackListed">
+            <wsdl:input name="isNodeIdentityBlackListed" message="tns:isNodeIdentityBlackListed"/>
+            <wsdl:output name="isNodeIdentityBlackListedResponse" message="tns:isNodeIdentityBlackListedResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeMetrics">
+            <wsdl:input name="getNodeMetrics" message="tns:getNodeMetrics"/>
+            <wsdl:output name="getNodeMetricsResponse" message="tns:getNodeMetricsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addNodeIdentityToBlackList">
+            <wsdl:input name="addNodeIdentityToBlackList" message="tns:addNodeIdentityToBlackList"/>
+            <wsdl:output name="addNodeIdentityToBlackListResponse" message="tns:addNodeIdentityToBlackListResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeEvents">
+            <wsdl:input name="getNodeEvents" message="tns:getNodeEvents"/>
+            <wsdl:output name="getNodeEventsResponse" message="tns:getNodeEventsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodes">
+            <wsdl:input name="searchNodes" message="tns:searchNodes"/>
+            <wsdl:output name="searchNodesResponse" message="tns:searchNodesResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="executeNodeToServerDataRate">
+            <wsdl:input name="executeNodeToServerDataRate" message="tns:executeNodeToServerDataRate"/>
+            <wsdl:output name="executeNodeToServerDataRateResponse" message="tns:executeNodeToServerDataRateResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="countNodeEvents">
+            <wsdl:input name="countNodeEvents" message="tns:countNodeEvents"/>
+            <wsdl:output name="countNodeEventsResponse" message="tns:countNodeEventsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setNodeAccessConfiguration">
+            <wsdl:input name="setNodeAccessConfiguration" message="tns:setNodeAccessConfiguration"/>
+            <wsdl:output name="setNodeAccessConfigurationResponse" message="tns:setNodeAccessConfigurationResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeAccessConfiguration">
+            <wsdl:input name="getNodeAccessConfiguration" message="tns:getNodeAccessConfiguration"/>
+            <wsdl:output name="getNodeAccessConfigurationResponse" message="tns:getNodeAccessConfigurationResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUplinkIpTunnelInfo">
+            <wsdl:input name="getUplinkIpTunnelInfo" message="tns:getUplinkIpTunnelInfo"/>
+            <wsdl:output name="getUplinkIpTunnelInfoResponse" message="tns:getUplinkIpTunnelInfoResponse"/>
+            <wsdl:fault name="WSNodeException" message="tns:WSNodeException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="NodeServicesSoapBinding" type="tns:NodeServices">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="removeNodeIdentityFromWhiteList">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="removeNodeIdentityFromWhiteList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="removeNodeIdentityFromWhiteListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAreaTopologyView">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getAreaTopologyView">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAreaTopologyViewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodeMetrics">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="searchNodeMetrics">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="searchNodeMetricsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="countNodes">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="countNodes">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="countNodesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNodeIdentityToWhiteList">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="addNodeIdentityToWhiteList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addNodeIdentityToWhiteListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="executeServerToNodeDataRate">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="executeServerToNodeDataRate">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="executeServerToNodeDataRateResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="resetMessageQueuePullIntervalForNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="resetMessageQueuePullIntervalForNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="resetMessageQueuePullIntervalForNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isNodeIdentityWhiteListed">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="isNodeIdentityWhiteListed">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="isNodeIdentityWhiteListedResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="pingNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="pingNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="pingNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeTopologyView">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getNodeTopologyView">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getNodeTopologyViewResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeById">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getNodeById">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getNodeByIdResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="countNodeMetrics">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="countNodeMetrics">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="countNodeMetricsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMessageQueuePullIntervalForNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getMessageQueuePullIntervalForNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getMessageQueuePullIntervalForNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="purgeNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="purgeNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="purgeNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="restartNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="restartNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="restartNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setLocation">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="setLocation">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="setLocationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodeEvents">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="searchNodeEvents">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="searchNodeEventsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageQueuePullIntervalForNode">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="setMessageQueuePullIntervalForNode">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="setMessageQueuePullIntervalForNodeResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeNodeIdentityFromBlackList">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="removeNodeIdentityFromBlackList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="removeNodeIdentityFromBlackListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isNodeIdentityBlackListed">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="isNodeIdentityBlackListed">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="isNodeIdentityBlackListedResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeMetrics">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getNodeMetrics">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getNodeMetricsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addNodeIdentityToBlackList">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="addNodeIdentityToBlackList">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addNodeIdentityToBlackListResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeEvents">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getNodeEvents">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getNodeEventsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchNodes">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="searchNodes">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="searchNodesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="executeNodeToServerDataRate">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="executeNodeToServerDataRate">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="executeNodeToServerDataRateResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="countNodeEvents">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="countNodeEvents">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="countNodeEventsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setNodeAccessConfiguration">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="setNodeAccessConfiguration">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="setNodeAccessConfigurationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNodeAccessConfiguration">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getNodeAccessConfiguration">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getNodeAccessConfigurationResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUplinkIpTunnelInfo">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getUplinkIpTunnelInfo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getUplinkIpTunnelInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="WSNodeException">
+                <soap:fault name="WSNodeException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="NodeServices">
+        <wsdl:port name="NodeServices" binding="tns:NodeServicesSoapBinding">
+            <soap:address location="https://mea-itanz-itg.dev.cyanconnode.com/nms/ws/NodeServices"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

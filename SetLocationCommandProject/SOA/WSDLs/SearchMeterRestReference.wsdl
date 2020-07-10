@@ -1,0 +1,36 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="SearchMeterRestReference"
+     targetNamespace="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SearchMeterRestReference"
+     xmlns:tns="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SearchMeterRestReference"
+     xmlns:inp1="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_request"
+     xmlns:inp2="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_response"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SearchMeterRestReference">
+        <plnk:role name="SearchMeterRestReferenceProvider" portType="tns:SearchMeterRestReference_ptt"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_request"
+                 schemaLocation="../Schemas/searchInputRequest.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_response"
+                 schemaLocation="../Schemas/searchMeterResponse.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="searchMeter_inputMessage">
+        <wsdl:part name="request" element="inp1:SearchMeter"/>
+    </wsdl:message>
+    <wsdl:message name="searchMeter_outputMessage">
+        <wsdl:part name="reply" element="inp2:SearchMeterResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="SearchMeterRestReference_ptt">
+        <wsdl:operation name="searchMeter">
+            <wsdl:input message="tns:searchMeter_inputMessage"/>
+            <wsdl:output message="tns:searchMeter_outputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

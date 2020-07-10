@@ -1,0 +1,136 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Jun 30 11:27:09 PKT 2020
+  Author:  Pc
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SetLocationBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SetLocationBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SetLocationBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://ws.terminal.service.connode.com/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SearchMeterRestReference"
+         xmlns:ns3="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_response"
+         xmlns:ns4="http://TargetNamespace.com/SearchMeterRestReference_searchMeter_request"
+         queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116" suppressJoinFailure="no" exitOnStandardFault="no">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/SetLocationCommandApplication/SetLocationCommandProject/SetLocationBPELProcess" location="../WSDLs/SetLocationBPELProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="setlocationbpelprocess_client" partnerLinkType="client:SetLocationBPELProcess" myRole="SetLocationBPELProcessProvider"/>
+    <partnerLink name="SearchMeterRestReference" partnerLinkType="ns2:SearchMeterRestReference"
+                 partnerRole="SearchMeterRestReferenceProvider"/>
+    <partnerLink name="SetLocationSOAPReference" partnerLinkType="ns1:SetLocationSOAPReference"
+                 partnerRole="NodeServices"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable" messageType="client:SetLocationBPELProcessRequestMessage"/>
+    <variable name="outputVariable" messageType="client:SetLocationBPELProcessResponseMessage"/>
+    <variable name="ReplyError_OutputVariable" messageType="client:SetLocationBPELProcessResponseMessage"/>
+    <variable name="InvokeSearchMeter_InputVariable" messageType="ns2:searchMeter_inputMessage"/>
+    <variable name="InvokeSearchMeter_OutputVariable" messageType="ns2:searchMeter_outputMessage"/>
+    <variable name="InvokesetLocation_InputVariable" messageType="ns1:setLocation"/>
+    <variable name="InvokesetLocation_OutputVariable" messageType="ns1:setLocationResponse"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <faultHandlers>
+    <catchAll>
+      <sequence name="Sequence1">
+        <assign name="AssignError">
+          <copy>
+            <from>ora:getFaultAsString()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$ReplyError_OutputVariable.payload/client:result</to>
+          </copy>
+          <copy>
+            <from>ora:getFlowId()</from>
+            <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$ReplyError_OutputVariable.payload/client:flowId</to>
+          </copy>
+        </assign>
+        <reply name="ReplyError" partnerLink="setlocationbpelprocess_client" variable="ReplyError_OutputVariable"
+               portType="client:SetLocationBPELProcess" operation="process"/>
+      </sequence>
+    </catchAll>
+  </faultHandlers>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in SetLocationBPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="setlocationbpelprocess_client" portType="client:SetLocationBPELProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignInputs">
+      <copy>
+        <from>$inputVariable.payload/client:latitude</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokesetLocation_InputVariable.parameters/latitude</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.payload/client:meterId</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokeSearchMeter_InputVariable.request/ns4:meterId</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.payload/client:longitude</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokesetLocation_InputVariable.parameters/longitude</to>
+      </copy>
+      <copy>
+        <from>ora:getFlowId()</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:flowId</to>
+      </copy>
+      <copy>
+        <from>"Successful"</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.payload/client:result</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="setlocationbpelprocess_client" portType="client:SetLocationBPELProcess" operation="process" variable="outputVariable"/>
+    <invoke name="InvokeSearchMeter" bpelx:invokeAsDetail="no" partnerLink="SearchMeterRestReference"
+            portType="ns2:SearchMeterRestReference_ptt" operation="searchMeter"
+            inputVariable="InvokeSearchMeter_InputVariable" outputVariable="InvokeSearchMeter_OutputVariable"/>
+    <assign name="AssignNodeId">
+      <copy>
+        <from>$InvokeSearchMeter_OutputVariable.reply/ns3:topLevelArray/ns3:nodeId</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$InvokesetLocation_InputVariable.parameters/nodeId</to>
+      </copy>
+    </assign>
+    <invoke name="InvokesetLocation" partnerLink="SetLocationSOAPReference"
+            portType="ns1:NodeServices" operation="setLocation" inputVariable="InvokesetLocation_InputVariable"
+            outputVariable="InvokesetLocation_OutputVariable" bpelx:invokeAsDetail="no"/>
+  </sequence>
+</process>

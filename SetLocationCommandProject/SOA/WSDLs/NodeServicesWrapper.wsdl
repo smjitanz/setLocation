@@ -1,0 +1,15 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="NodeServices"
+     targetNamespace="http://ws.terminal.service.connode.com/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:tns="http://ws.terminal.service.connode.com/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="SetLocationSOAPReference">
+        <plnk:role name="NodeServices" portType="tns:NodeServices"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://ws.terminal.service.connode.com/" location="NodeServices.wsdl"/>
+</wsdl:definitions>
